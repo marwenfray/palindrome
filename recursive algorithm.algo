@@ -1,0 +1,27 @@
+FUNCTION palindrome(str:STRING) : BOOLEAN
+VAR
+pal:BOOLEAN;
+BEGIN
+    IF (str.length=0 OR str.length=1) THEN
+        pal:= TRUE;
+    ELSE_IF (str[0]=str[str.length-1]) THEN
+        palindrome(str[1,str.length-2])//recursive action with str missing the first and last caracter
+    ELSE
+        pal:= FALSE;
+    END_IF
+    RETURN  pal ;
+END
+ALGORITHM Is palindrome
+VAR
+    str: STRING;
+    test: BOOLEAN;
+BEGIN
+    write("Please write your word");
+    read (str);
+    test:= palindrome(str);
+    IF (test=TRUE) THEN
+        write ("Your word is a palindrome")
+    ELSE
+        write ("Your word isn't a palindrome")
+    END_IF
+END
